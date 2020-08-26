@@ -44,24 +44,41 @@ async function ChangeTheValue(selectedData) {
             $infoPaises.innerHTML = "";
         }
         else{
+            
             datosJSON.forEach((value)=>{
                 if(value.alpha3Code == selectedData.value)
                 {
-                    $infoPaises.innerHTML = ` <div class="card" style="width: 20rem;">
-                                                    <img src="${value.flag}" class="card-img-top" alt="">
-                                                    <div class="card-body">
-                                                    <p class="card-text">
-                                                        <ul>
-                                                            <li> Capital: ${value.capital}</li>
-                                                            <li> Código de llamada: ${value.callingCodes}</li>
-                                                            <li> Idioma: ${value.languages[0].nativeName}</li>
-                                                            <li> Moneda: ${value.currencies[0].name} (${value.currencies[0].symbol})</li>
-                                                            <li> Gentilicio: ${value.demonym}</li>
-                                                            <li> Población: ${value.population}</li>
-                                                        </ul>
-                                                    </p>
-                                                    </div>
-                                                </div>   `;
+                    var AltSpellings =  "";
+                    value.altSpellings.forEach((spell)=>{
+                        AltSpellings += `${spell}`+"~"; 
+                    });
+
+                    $infoPaises.innerHTML =`
+                    <div class="card mb-3" style="max-width: 540px;">
+                        <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img src="${value.flag}" class="card-img" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                            <h5 class="card-title">${value.name}</h5>
+                            <p class="card-text">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"> Capital: ${value.capital}</li>
+                                    <li class="list-group-item"> Código de llamada: ${value.callingCodes}</li>
+                                    <li class="list-group-item"> Idioma: ${value.languages[0].nativeName}</li>
+                                    <li class="list-group-item"> Moneda: ${value.currencies[0].name} (${value.currencies[0].symbol})</li>
+                                    <li class="list-group-item"> Gentilicio: ${value.demonym}</li>
+                                    <li class="list-group-item"> Población: ${value.population}</li>
+                                </ul>
+                            </p>
+                            <p class="card-text"><small class="text-muted">${AltSpellings}</small></p>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                        `;
+
                 }
             });
         }
