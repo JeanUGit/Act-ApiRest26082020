@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", async () =>{
         $templateCard.querySelector(".card-img-top").setAttribute("src", element.thumbnail.path + "." + element.thumbnail.extension);
         $templateCard.querySelector(".card-title").textContent = element.name;
         $templateCard.querySelector(".card-text").textContent = element.description;
+        $templateCard.querySelector(".btn.bnt-dark").textContent = element.id; 
         $framgent.appendChild($templateCard.cloneNode(true));
        
     });
