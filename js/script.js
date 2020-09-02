@@ -1,7 +1,7 @@
 const tabla = document.querySelector('.container table tbody');
 
 function cargarUsuarios(){
-    fetch('usuarios.json')
+    fetch('https://jsonplaceholder.typicode.com/comments')
         .then(respuesta => respuesta.json()) //Indicamos el formato en que se desea obtener la información
         .then(usuarios => {
             usuarios.forEach(usuario => {
